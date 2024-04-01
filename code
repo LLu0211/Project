@@ -1,0 +1,53 @@
+from dash import Dash, dcc, html, Input, Output
+import plotly
+import plotly.graph_objects as go
+import pandas as pd
+import numpy as np
+
+theses = pd.read_csv("THESES-TOTAL.csv")
+
+theses.head(5)
+
+maitrises = theses.query("type == 'maîtrise'")
+
+medianesMaitrisesUniv = maitrises.groupby("universite")["nbPages"].median().sort_values(ascending=False)
+medianesMaitrisesUniv
+
+medianesMaitrisesDiscipline = maitrises.groupby("discipline")["nbPages"].median().sort_values(ascending=False)
+medianesMaitrisesDiscipline
+
+# Manually update the values in the grandeDiscipline column
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace('1. Sciences exactes et naturelles', 'Sciences exactes et naturelles')
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace("2. Sciences de l'ingénieur et technologiques", "Sciences de l'ingénieur et technologiques")
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace('3. Sciences médicales et sanitaires', 'Sciences médicales et sanitaires')
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace('4. Sciences agricoles', 'Sciences agricoles')
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace('5. Sciences sociales', 'Sciences sociales')
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace('6. Sciences humaines', 'Sciences humaines')
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace('7. Programme personnalisé', 'Programme personnalisé')
+
+from dash import Dash, dcc, html, Input, Output
+import plotly
+import plotly.graph_objects as go
+import pandas as pd
+import numpy as np
+
+theses = pd.read_csv("THESES-TOTAL.csv")
+
+theses.head(5)
+
+maitrises = theses.query("type == 'maîtrise'")
+
+medianesMaitrisesUniv = maitrises.groupby("universite")["nbPages"].median().sort_values(ascending=False)
+medianesMaitrisesUniv
+
+medianesMaitrisesDiscipline = maitrises.groupby("discipline")["nbPages"].median().sort_values(ascending=False)
+medianesMaitrisesDiscipline
+
+# Manually update the values in the grandeDiscipline column
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace('1. Sciences exactes et naturelles', 'Sciences exactes et naturelles')
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace("2. Sciences de l'ingénieur et technologiques", "Sciences de l'ingénieur et technologiques")
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace('3. Sciences médicales et sanitaires', 'Sciences médicales et sanitaires')
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace('4. Sciences agricoles', 'Sciences agricoles')
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace('5. Sciences sociales', 'Sciences sociales')
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace('6. Sciences humaines', 'Sciences humaines')
+theses['grandeDiscipline'] = theses['grandeDiscipline'].str.replace('7. Programme personnalisé', 'Programme personnalisé')
